@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
+import  axios from  'axios' ;
 import './Login.css'
 function Login() {
   const [passwordType, setPasswordType] = useState("password");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   const togglePassword =()=>{
     if(passwordType==="password")
@@ -18,6 +20,20 @@ function Login() {
     e.preventDefault();
     console.log(email);
     console.log(password);
+     
+    axios.post('http://localhost:5000/api/auth/login', {
+        email: email,
+        password: password
+      })
+      .then(function (response) {
+        console.log(response.data.token);
+        localStorage.setItem('token',response.data.token);
+        navigate('/dashboard')
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  
   };
   return (
     <div   >  

@@ -12,14 +12,25 @@ import Login from './pages/login/Login';
   
 } from "react-router-dom";
 import ResetPassword from './pages/resetPassword/ResetPassword';
+import Dashboard from './pages/admin/dashboard/Dashboard';
+import ListeEntreprise from './pages/admin/entreprise/listeEntreprise/ListeEntreprise';
+import { useState } from 'react';
+import Sidebar from './components/sideBar/Sidebar';
+import Navbar from './components/navBar/Navbar';
 function App() {
+  const [connected,setConnected]=useState(false)
   return (
+
     <BrowserRouter>
+       
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/forgetPassword" element={<ForgetPassword/>}/>
       <Route path="/resetPassword/:token" element={<ResetPassword/>}/>
+      <Route path="/dashboard" element={<Dashboard/>}/>
+      <Route path="/listeEntreprise" element={<ListeEntreprise />} />
+      
     </Routes>
     </BrowserRouter>
   );

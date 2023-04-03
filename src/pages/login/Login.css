@@ -42,7 +42,7 @@
     pointer-events: none;
 }
 header{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
     color: #232836;
     text-align: center;
@@ -71,7 +71,7 @@ form{
     outline: none;
     padding: 0 15px;
     border: 1px solid#CACACA;
-    font-size: 11px;
+    font-size: 14px;
 }
 .field input:focus{
     border-bottom-width: 2px;

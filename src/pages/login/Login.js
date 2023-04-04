@@ -21,7 +21,8 @@ function Login() {
     console.log(email);
     console.log(password);
      
-    axios.post('http://localhost:5000/api/auth/login', {
+    axios.post('http://localhost:5000/api/auth/login',
+     {
         email: email,
         password: password
       })

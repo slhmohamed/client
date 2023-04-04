@@ -17,6 +17,7 @@ import ListeEntreprise from './pages/admin/entreprise/listeEntreprise/ListeEntre
 import { useState } from 'react';
 import Sidebar from './components/sideBar/Sidebar';
 import Navbar from './components/navBar/Navbar';
+import ListeUser from './pages/admin/users/listeUser/ListeUser';
 function App() {
   const [connected,setConnected]=useState(false)
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path="/resetPassword/:token" element={<ResetPassword/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/listeEntreprise" element={<ListeEntreprise />} />
+      <Route path="/listUser" element={<ListeUser />} />
       
     </Routes>
     </BrowserRouter>

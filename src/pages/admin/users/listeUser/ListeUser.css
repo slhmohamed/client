@@ -1,0 +1,128 @@
+body {
+    font-family: 'lato', sans-serif;
+}
+.container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    background-color: #f5f5f5;
+}
+h2 {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+}
+h2 small {
+    font-size: 0.5em;
+}
+.responsive-table li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+.responsive-table .table-header {
+    background-color: #95a5a6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.responsive-table .table-row {
+    background-color: #fff;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+}
+.responsive-table .col-1 {
+    flex-basis: 17%;
+
+}
+.responsive-table .col-2 {
+    flex-basis: 30%;
+}
+.responsive-table .col-3 {
+    flex-basis: 20%;
+}
+.responsive-table .col-4 {
+    margin-left: 55px;
+    flex-basis: 20%;
+}
+.responsive-table .col-5 {
+    flex-basis: 6%;
+}
+@media all and (max-width: 767px) {
+    .responsive-table .table-header {
+        display: none;
+   }
+    .responsive-table li {
+        display: block;
+   }
+    .responsive-table .col {
+        flex-basis: 100%;
+   }
+    .responsive-table .col {
+        display: flex;
+        padding: 10px 0;
+   }
+    .responsive-table .col:before {
+        color: #6c7a89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+   }
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 45px;
+
+}
+
+.search{
+    margin-top: 15px;
+    height: 49%;
+    width: 55%;
+    outline: none;
+    background: #ffffff;
+    border: 2px solid #EFEEF1;
+    border-radius: 12px;
+    font-size: 18px;
+    padding: 5px 18px;
+}
+.bSearch{
+    margin-top: 13px;
+    border-radius: 25px;
+    height: 39px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 10px;
+    width: 65px;
+    border: none;
+    cursor: pointer;
+    background: #009aff;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.icon{
+    
+    font-size: 18px;
+
+}
+
+.ajout{
+    margin-top: 43px;
+    border-radius: 25px;
+    height: 39px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 10px;
+    width: 225px;
+    border: none;
+    cursor: pointer;
+    background: #6665ee;
+    color: #fff;
+    letter-spacing: 1px;
+}

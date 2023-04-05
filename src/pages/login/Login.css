@@ -179,3 +179,11 @@ a.google span{
     }
     
 }
+.error{
+    background: #f04040;
+    border-radius: 8px;
+    color: #fff;
+    padding: 11px;
+    transition: all 0.3s ease;
+    font-size: 17px;
+}

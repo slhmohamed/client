@@ -1,6 +1,7 @@
 import React, {  useState } from "react";
 import './ForgetPassword.css';
 import  axios from  'axios' ;
+import toast, { Toaster } from 'react-hot-toast';
 function ForgetPassword() {
   const [email, setEmail] = useState("");
   const handleSubmit = e => {
@@ -12,15 +13,21 @@ function ForgetPassword() {
         
       })
       .then(function (response) {
-        console.log(response.data.token);
-         
+        console.log(response);
+        toast.success('Email a été envoyé');  
+        setEmail("")     
       })
       .catch(function (error) {
         console.log(error);
       });
   };
   return (
-    <div> <div className="wrapper">
+    <div>
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
+       <div className="wrapper">
       <div className="top">
       <i className='bx bx-mail-send'></i>
       </div>

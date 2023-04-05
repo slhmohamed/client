@@ -1,5 +1,5 @@
 import React ,{ useEffect, useState }from 'react';
- 
+ import Modal from '../../../../components/Modal/Modal';
 import "./ListeUser.css"
 import Sidebar from '../../../../components/sideBar/Sidebar'
 import Navbar from '../../../../components/navBar/Navbar'
@@ -7,6 +7,8 @@ import axios from 'axios';
 function ListeUser() {
   const [users,setUsers]=useState([])
   const [key,setKey]=useState([])
+  const [modalOpen, setModalOpen] = useState(false);
+
   useEffect(() => {
     axios.get('http://localhost:5000/api/user/getAll')
      .then(function (response) {
@@ -41,7 +43,7 @@ function ListeUser() {
     <div class="home-content">
  
 
-    <div class="container">
+    <div class="containerU">
   <h2>Liste des utilsateurs  </h2>
   <div className='buttons'>
     <div className='searchs'>
@@ -50,7 +52,11 @@ function ListeUser() {
     <button className='bSearch' type='submit'  ><i class='bx bx-search-alt-2 icon'></i></button>
     </form>
     </div>
-    <button type='submit'  onclick="searchHandle()" className='ajout'>Ajouter utilisateurs</button>
+    <button     onClick={() => {
+          setModalOpen(true);
+          console.log("ok");
+          console.log(modalOpen);
+        }} className='ajout'>Ajouter utilisateurs</button>
 
   </div>
   <ul class="responsive-table">
@@ -82,7 +88,12 @@ function ListeUser() {
 </div>
     </div>
   </section>
+ 
+  
+  {modalOpen && <Modal setOpenModal={setModalOpen} />}
+ 
   </div>
+  
   )
 }
 

@@ -6,6 +6,7 @@ function Login() {
   const [passwordType, setPasswordType] = useState("password");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate()
 
   const togglePassword =()=>{
@@ -32,6 +33,7 @@ function Login() {
         navigate('/dashboard')
       })
       .catch(function (error) {
+        setErrorMessage(error.response.data.errors);
         console.log(error);
       });
   
@@ -43,6 +45,9 @@ function Login() {
             <div class="form login">
                 <div class="form-content">
                     <header>Se connecter</header>
+                    {errorMessage && ( 
+                        <p className="error"> <i class='bx bx-error'></i> {errorMessage} </p>
+                    )}
                     <form  onSubmit={handleSubmit}>
                         <div class="field input-field">
                             <input type="email" value={email}  onChange={e => setEmail(e.target.value)} placeholder="Email" class="input"/>

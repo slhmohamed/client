@@ -126,3 +126,10 @@ h2 small {
     color: #fff;
     letter-spacing: 1px;
 }
+
+.bxs-trash{
+    color: #6265ed;
+    font-size: 25px;
+    margin-left: 12px;
+    cursor: pointer;
+}

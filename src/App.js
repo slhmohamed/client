@@ -31,7 +31,7 @@ function App() {
       <Route path="/resetPassword/:token" element={<ResetPassword/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/listeEntreprise" element={<ListeEntreprise />} />
-      <Route path="/listUser" element={<ListeUser />} />
+      <Route path="/listeUtilisateur" element={<ListeUser />} />
       
     </Routes>
     </BrowserRouter>

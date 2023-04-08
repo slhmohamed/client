@@ -426,3 +426,28 @@
   .role{
     font-size: 11px;
   }
+  a{
+    cursor: pointer;
+  }
+  .imageA{
+    width: 100px;
+    border-radius: 50% 50% 50% 50%;
+    margin-left: 53px;
+    margin-top: 49px;
+    margin-bottom: 50px; 
+  }
+
+  .user{
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: -25px;
+    margin-top: -29px;
+    color: #fff;
+  }
+  .role{
+    font-size: 10px;
+    margin-left: -28px;
+    color: #fff;
+    margin-top: -9px;
+
+  }

@@ -4,12 +4,14 @@ import "./ListeUser.css"
 import Sidebar from '../../../../components/sideBar/Sidebar'
 import Navbar from '../../../../components/navBar/Navbar'
 import axios from 'axios';
+import { Toaster, toast } from 'react-hot-toast';
 function ListeUser() {
   const [users,setUsers]=useState([])
   const [key,setKey]=useState([])
   const [modalOpen, setModalOpen] = useState(false);
 
-  useEffect(() => {
+
+ const  getAllUser =()=>{
     axios.get('http://localhost:5000/api/user/getAll')
      .then(function (response) {
        console.log(response);
@@ -18,8 +20,12 @@ function ListeUser() {
      
      })
       
+  }
+  useEffect(() => {
+    getAllUser()
+      
   
-  },[])
+  },[users])
 
   const searchHandle= e => {
     e.preventDefault();
@@ -34,16 +40,40 @@ function ListeUser() {
       });
   
   };
+  const deleteUser  = (id)=>{
+     
+ console.log(id);
+    
+    axios.delete('http://localhost:5000/api/user/deleteUser/'+id)
+      .then(function (response) {
+ 
+        this.getAllUser();
+        toast.success('Utilisateur a éte supprimé');  
+       
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  
+ 
+
+  }
   return (
     <div>
+
     <Sidebar/>
   <section class="home-section">
    
     <Navbar/>
+    <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
     <div class="home-content">
  
 
     <div class="containerU">
+
   <h2>Liste des utilsateurs  </h2>
   <div className='buttons'>
     <div className='searchs'>
@@ -75,7 +105,7 @@ function ListeUser() {
       <div class="col col-2" data-label="Customer Name">{user.prenom}</div>
       <div class="col col-3" data-label="Amount">{user.email}</div>
       <div class="col col-4" data-label="Payment Status">{user.role}</div>
-      <div class="col col-5" data-label="Payment Status">Delete</div>
+      <div class="col col-5" data-label="Payment Status"><i  onClick={() => deleteUser(user._id)} class='bx bxs-trash'></i></div>
     </li>
   )
   } 

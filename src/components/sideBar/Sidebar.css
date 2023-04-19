@@ -451,3 +451,10 @@
     margin-top: -9px;
 
   }
+  .hr{
+    color: white;
+    background-color: white;
+    height: 2px;
+    width: 201px;
+    margin-left: 14px;
+  }

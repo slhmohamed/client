@@ -18,6 +18,12 @@ import { useState } from 'react';
 import Sidebar from './components/sideBar/Sidebar';
 import Navbar from './components/navBar/Navbar';
 import ListeUser from './pages/admin/users/listeUser/ListeUser';
+import Event from './pages/admin/event/Event';
+ 
+import AddEvents from './pages/admin/addEvents/AddEvents';
+import UpdateEvent from './components/calandar/UpdateEvent';
+import UpdateEvents from './pages/admin/updateEvents/UpdateEvents';
+import Profile from './pages/admin/profile/Profile';
 function App() {
   const [connected,setConnected]=useState(false)
   return (
@@ -32,6 +38,11 @@ function App() {
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/listeEntreprise" element={<ListeEntreprise />} />
       <Route path="/listeUtilisateur" element={<ListeUser />} />
+      <Route path="/events" element={<Event />} />
+      <Route path="/addEvents" element={<AddEvents />} />
+      <Route path='/event/update/:id' element={<UpdateEvents/>}/>
+      <Route path='/profile' element={<Profile/>}/>
+
       
     </Routes>
     </BrowserRouter>

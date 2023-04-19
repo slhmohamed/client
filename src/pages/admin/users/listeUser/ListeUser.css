@@ -119,12 +119,13 @@ h2 small {
     font-size: 15px;
     font-weight: bold;
     margin-left: 10px;
-    width: 225px;
+    width: 225px !important;
     border: none;
     cursor: pointer;
     background: #6665ee;
     color: #fff;
     letter-spacing: 1px;
+    margin-bottom: 10px;
 }
 
 .bxs-trash{
@@ -132,4 +133,17 @@ h2 small {
     font-size: 25px;
     margin-left: 12px;
     cursor: pointer;
+}
+.navigation{
+    height: 39px;
+    width: 93%;
+    background: #fff;
+    margin-left: 20px;
+    padding: 7px;
+    border-radius: 9px;
+    font-size: 18px;
+    color: #a5bdff;
+}
+.form-search{
+    margin-top: 33px !important;
 }

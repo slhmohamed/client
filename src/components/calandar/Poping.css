@@ -1,0 +1,38 @@
+.update{
+    margin-top: 1px;
+}
+.modal-dialog{
+    background: white !important;
+    position: absolute !important;
+    z-index: 1111 !important;
+    left: 30% !important;
+    margin-top: 14px !important;
+    width: 435px !important;
+    padding-left: 25px !important;
+    height: 199px !important;
+    padding-top: 24px !important;
+}
+.modal-footer{
+    display: flex !important;
+    justify-content: space-around !important;
+}
+
+.b-close{
+    border: none;
+    height: 29px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+.b-delete{
+    border: none;
+    height: 29px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.b-update{
+    border: none;
+    height: 29px;
+    border-radius: 7px;
+    font-weight: bold;
+}

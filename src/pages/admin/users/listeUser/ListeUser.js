@@ -70,14 +70,18 @@ function ListeUser() {
   reverseOrder={false}
 />
     <div class="home-content">
- 
+    <div className='navigation'>
+  <i >
+  <i class='bx bx-home-alt-2'></i> Dashboard / <i class='bx bxs-calendar'></i> Liste utilisateur
+  </i>
+ </div>
 
     <div class="containerU">
 
   <h2>Liste des utilsateurs  </h2>
   <div className='buttons'>
     <div className='searchs'>
-      <form onSubmit={searchHandle}>
+      <form onSubmit={searchHandle} className='form-search'>
     <input type='text' className='search' placeholder='Rechercher' value={key}  onChange={e => setKey(e.target.value)}/>
     <button className='bSearch' type='submit'  ><i class='bx bx-search-alt-2 icon'></i></button>
     </form>

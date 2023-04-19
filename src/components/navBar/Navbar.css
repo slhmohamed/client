@@ -367,6 +367,10 @@
     }
   }
 
-  .role{
-    font-size: 11px;
+  span.role{
+    font-size: 10px !important;
+    margin-left: -28px !important;
+    color: #6e6b6b  !important;
+    margin-top: 5px !important;
+    margin-left: 2px !important;
   }

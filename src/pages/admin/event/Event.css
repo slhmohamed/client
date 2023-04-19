@@ -1,0 +1,32 @@
+.navigation{
+    height: 39px;
+    width: 93%;
+    background: #fff;
+    margin-left: 20px;
+    padding: 7px;
+    border-radius: 9px;
+    font-size: 18px;
+    color: #a5bdff;
+}
+.button-event{
+    height: 21px !important;
+    width: 17% !important;
+    position: inherit;
+    left: 390px;
+    margin-top: 13px;
+    border-radius: 25px;
+    height: 39px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 10px;
+    width: 225px;
+    border: none;
+    cursor: pointer;
+    background: #6665ee;
+    color: #fff;
+    letter-spacing: 1px;
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    padding-left: 16px;
+}

@@ -10,11 +10,16 @@ function Modal({ setOpenModal }) {
     const [telephone,setTelephone]=useState(0);
     const [password,setPassword]=useState("");
     const [role,setRole]=useState("");
+    const [errorMessage, setErrorMessage] = useState('');
+    const [confirmPassword,setConfirmPassword]=useState('')
+
     const handleSubmit = e => {
         e.preventDefault();
         console.log(email);
         console.log(password);
-         
+         if(password!=confirmPassword){
+          setErrorMessage('Le mot de passe ne correspond pas')
+         }else{
         axios.post('http://localhost:5000/api/user/addUser',
          {
             nom:nom,
@@ -27,12 +32,14 @@ function Modal({ setOpenModal }) {
           })
           .then(function (response) {
             console.log(response);
+            setOpenModal(false);
             toast.success('Utilisateur ajouté avec succès');  
           })
           .catch(function (error) {
            
             console.log(error);
           });
+        }
       
       };
   return (
@@ -57,7 +64,7 @@ function Modal({ setOpenModal }) {
         <div class="container-add">
     <div class="title">Ajouter nouvel utilisateur</div>
     <div class="content">
-      <form onSubmit={handleSubmit}>
+      <form className="formM" onSubmit={handleSubmit}>
         <div class="user-details">
           <div class="input-box">
             <span class="details">Nom</span>
@@ -77,13 +84,16 @@ function Modal({ setOpenModal }) {
           </div>
           <div class="input-box">
             <span class="details">Mot de passe</span>
-            <input type="text" value={password}  onChange={e => setPassword(e.target.value)} placeholder="Enter your password" required/>
+            <input type="password" value={password}  onChange={e => setPassword(e.target.value)} placeholder="Enter your password" required/>
           </div>
           <div class="input-box">
             <span class="details">Confirme Mot de passe</span>
-            <input type="text" placeholder="Confirm your password" required/>
+            <input type="password" value={confirmPassword}  onChange={e => setConfirmPassword(e.target.value)}  placeholder="Confirm your password" required/>
           </div>
         </div>
+        {errorMessage && ( 
+                        <p className="error"> <i class='bx bx-error'></i> {errorMessage} </p>
+                    )}
         <div class="gender-details">
           <input type="radio" value="SuperAdmin" name="gender" id="dot-1" onChange={e => setRole("SuperAdmin")}/>
           <input type="radio" value="Unite" name="gender" id="dot-2" onChange={e => setRole("Unite")}/>
@@ -121,18 +131,7 @@ function Modal({ setOpenModal }) {
       </form>
     </div>
   </div>
-
-        <div className="footer">
-          <button
-            onClick={() => {
-              setOpenModal(false);
-            }}
-            id="cancelBtn"
-          >
-            Cancel
-          </button>
-          <button>Continue</button>
-        </div>
+ 
       </div>
     </div>
     </div>

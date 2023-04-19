@@ -40,7 +40,7 @@ function ForgetPassword() {
             <input type="text" placeholder="Enter your email" value={email}  onChange={e => setEmail(e.target.value)}  required />
           </div>
           <div className="input-box">
-            <button type="submit"   >Envoyer</button>
+            <button type="submit" className="buttonFP"  >Envoyer</button>
 
           </div>
         </form>

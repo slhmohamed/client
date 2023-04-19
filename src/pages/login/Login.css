@@ -87,11 +87,13 @@ form{
     padding: 5px;
 }
 .field button{
+    margin-left: 20px;
     border-radius: 25px;
     color: #fff;
     background-color: #0171d3;
     transition: all 0.3s ease;
     cursor: pointer;
+    width: 100% !important;
 }
 .field button:hover{
     background-color: #016dcb;

@@ -436,3 +436,10 @@
   .role{
     font-size: 11px;
   }
+  canvas{
+    height: 265px !important;
+    width: 530px !important;
+  }
+  .pieD{
+    display: flex;
+  }

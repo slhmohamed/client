@@ -1,16 +1,25 @@
 .update{
     margin-top: 1px;
 }
+.close{
+    cursor: pointer;
+}
+.bt{
+    cursor: pointer !important;
+}
 .modal-dialog{
     background: white !important;
     position: absolute !important;
     z-index: 1111 !important;
     left: 30% !important;
     margin-top: 14px !important;
-    width: 435px !important;
+   width:631px !important;
     padding-left: 25px !important;
     height: 199px !important;
     padding-top: 24px !important;
+}
+.btn-close{
+    display: none;
 }
 .modal-footer{
     display: flex !important;
@@ -28,6 +37,10 @@
     height: 29px;
     border-radius: 7px;
     font-weight: bold;
+}
+.event-detail{
+    column-gap: 126px !important;
+    margin-left: 2px !important;
 }
 
 .b-update{

@@ -433,10 +433,16 @@
     width: 100px;
     border-radius: 50% 50% 50% 50%;
     margin-left: 53px;
-    margin-top: 49px;
+    margin-top: -9px;
     margin-bottom: 50px; 
   }
-
+.avProfile{
+  height: 98px;
+    width: 108px;
+    border-radius: 60%;
+    margin-bottom: 31px;
+    margin-left: 47px;
+}
   .user{
     font-size: 12px;
     font-weight: bold;
@@ -449,6 +455,7 @@
     margin-left: -28px;
     color: #fff;
     margin-top: -9px;
+    margin-left: 75px;
 
   }
   .hr{

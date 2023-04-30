@@ -265,3 +265,13 @@
 .card-body input{
     outline: none;
 }
+.file-upload{
+    
+    color: #fff;
+    background: #0075d3;
+    border: none;
+    border-radius: 10px;
+    height: 28px;
+    width: 86px;
+    margin-bottom: 8px;
+}

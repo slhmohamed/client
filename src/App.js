@@ -3,7 +3,7 @@ import './App.css';
  import ForgetPassword from './pages/forgetPassword/ForgetPassword';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
- import {
+  import {
 
 
   BrowserRouter  ,
@@ -15,16 +15,20 @@ import ResetPassword from './pages/resetPassword/ResetPassword';
 import Dashboard from './pages/admin/dashboard/Dashboard';
 import ListeEntreprise from './pages/admin/entreprise/listeEntreprise/ListeEntreprise';
 import { useState } from 'react';
-import Sidebar from './components/sideBar/Sidebar';
-import Navbar from './components/navBar/Navbar';
+
 import ListeUser from './pages/admin/users/listeUser/ListeUser';
 import Event from './pages/admin/event/Event';
  
 import AddEvents from './pages/admin/addEvents/AddEvents';
-import UpdateEvent from './components/calandar/UpdateEvent';
 import UpdateEvents from './pages/admin/updateEvents/UpdateEvents';
 import Profile from './pages/admin/profile/Profile';
-function App() {
+import Desicion from './components/calandar/Desicion';
+import UpdateDesicion from './components/calandar/UpdateDesicion';
+import ListeDesicion from './pages/admin/listeDesicions/ListeDesicion';
+import Room from './pages/admin/room/Room';
+import PV from './components/calandar/PV';
+ 
+    function App() {
   const [connected,setConnected]=useState(false)
   return (
 
@@ -42,10 +46,16 @@ function App() {
       <Route path="/addEvents" element={<AddEvents />} />
       <Route path='/event/update/:id' element={<UpdateEvents/>}/>
       <Route path='/profile' element={<Profile/>}/>
-
+      <Route path='/event/desicion/:id' element={<Desicion/>}/>
+      <Route path='/event/updateDesicion/:id' element={<UpdateDesicion/>}/>
+      <Route path='/liste-désicion' element={<ListeDesicion/>}/>
+      <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/chat' element={<Room/>}/>
+      <Route path='/pv/:id' element={<PV/>}/>
+ 
       
     </Routes>
-    </BrowserRouter>
+    </BrowserRouter> 
   );
 }
 

@@ -1,0 +1,156 @@
+/* RESET & BASIC STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+
+:root {
+  --white: #fff;
+  --darkblue: #1b4965;
+  --lightblue: #edf2f4;
+}
+ 
+.containerDesi {
+  max-width: 1000px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+/* TABLE STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table-wrapperDS::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-wrapperDS::-webkit-scrollbar-thumb {
+  background: var(--darkblue);
+  border-radius: 40px;
+}
+
+ 
+
+.table-wrapperDS table {
+  margin: 50px 0 20px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.table-wrapperDS table th,
+.table-wrapperDS table td {
+  padding: 10px;
+  min-width: 85px;
+}
+
+.table-wrapperDS table th {
+  color: var(--white);
+  background: var(--darkblue);
+}
+
+.table-wrapperDS table tbody tr:nth-of-type(even) > * {
+  background: var(--lightblue);
+}
+
+.table-wrapperDS table td:first-child {
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  grid-gap: 10px;
+  text-align: left;
+}
+
+.table-credits {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+/* FOOTER STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-footer {
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  z-index: 1;
+  background: var(--white);
+}
+
+.page-footer a {
+  display: flex;
+  margin-left: 4px;
+}
+.ajoutDesi{
+    
+    margin-top: 43px;
+    border-radius: 25px;
+    height: 39px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: -1px;
+    width: 225px !important;
+    border: none;
+    cursor: pointer;
+    background: #004a65;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+.no-desicion{
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: red;
+}
+
+.icon-desicion{
+cursor: pointer;
+}
+.b-coment{
+ 
+  margin-top: 6px;
+  margin-left: 79px;
+  border-radius: 25px;
+  height: 26px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 80px !important;
+  width: 94px !important;
+  border: none;
+  cursor: pointer;
+  background: #004a65;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-left: 86px;
+  display: grid;
+}
+textarea{
+  border: none;
+  outline: none;
+}
+.coment{
+  margin-right: 30px;
+}
+.containerDesi{
+  display: flex;
+}
+.table-wrapperDS{
+  width: 81% !important;
+    margin-left: -21px;
+}
+.coments-details{
+  display: grid;
+  
+  display: grid;
+  margin-left: 43px;
+  margin-top: 48px;
+  width: 104%;
+}
+.sender-de{
+  color: blue;
+}

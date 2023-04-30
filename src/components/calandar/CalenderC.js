@@ -38,7 +38,7 @@ const CalendarC = ({event, ShowEventApi, closeEvent, ShowEventApis}) => {
     useEffect(()=>{
       ShowEventsApi()
        
-    },[]) 
+    },[events]) 
    
  const ShowEventsApi =()=>{
   axios.get('http://localhost:5000/api/event/getAll')

@@ -25,7 +25,7 @@ function ListeUser() {
     getAllUser()
       
   
-  },[users])
+  },[])
 
   const searchHandle= e => {
     e.preventDefault();

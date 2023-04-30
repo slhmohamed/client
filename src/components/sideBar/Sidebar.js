@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode'
 
 function Sidebar() {
+  
   const navigate=useNavigate()
   const logout = (e) => {
     e.preventDefault();
@@ -13,11 +14,14 @@ function Sidebar() {
   }
   const [user,setUser]=useState('')
   const [role,setRole]=useState('')
+  const [avatar,setAvatar]=useState('')
+
   useEffect(()=>{
       const token=localStorage.getItem('token');
       console.log(jwt_decode(token).username);
       setUser(jwt_decode(token).username);
       setRole(jwt_decode(token).role);
+      setAvatar(jwt_decode(token).avatar)
        
   },[])
   return (
@@ -27,8 +31,11 @@ function Sidebar() {
       <span class="logo_name">CodingLab</span>
     </div>
     <div className='avatar'>
-    <img className='imageA' src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg" alt="react logo"  />
-    <h2 className='user'>{user}</h2>
+    {
+                        avatar!='' ?  <img class="avatar avProfile border-gray" src={`http://localhost:5000/${avatar}`}   alt="..." />
+                        : <p> <img class="avatar border-gray" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg" alt="..." />
+                        </p>
+                    }    <h2 className='user'>{user}</h2>
     <h3 className='role'>{role}</h3>
     </div>
     <hr className='hr'
@@ -36,10 +43,10 @@ function Sidebar() {
     />
       <ul class="nav-links">
         <li>
-          <a href="#" >
+        <Link to="/dashboard">
             <i class='bx bx-grid-alt' ></i>
             <span class="links_name">Dashboard</span>
-          </a>
+            </Link>
         </li>
         <li>
         <Link to="/listeUtilisateur">
@@ -62,6 +69,15 @@ function Sidebar() {
               <span class="links_name">Evenement</span>
            </Link>
           </li>
+
+          <li>
+          
+          <Link to="/liste-désicion">
+          <i class='bx bxs-food-menu'></i>
+              <span class="links_name">Décisions</span>
+           </Link>
+          </li>
+     
      
     
          

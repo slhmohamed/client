@@ -1,0 +1,195 @@
+
+.modal{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    transition: opacity .25s ease-in;
+    visibility: inherit;
+    opacity: 1;
+    background-color: #7b7b7bba;
+  }
+  
+  .close{
+    color: black;
+    margin-top: -27px;
+    position: absolute;
+    right: 17px;
+    font-size: 17px;
+  }
+  .modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color:transparent;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalContainer {
+    width: 875px;
+    height: 458px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin-top: 63px;
+    margin-left: 214px;
+  }
+  
+  .modalContainer .title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+  }
+ 
+  
+.containerDesic {
+ 
+  width: 100% !important;
+  background: #fff !important;
+  padding: 25px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1) !important;
+}
+.input-Desic{
+  height: 50px !important;
+
+  outline: none !important;
+  font-size: 1rem !important;
+  color: #707070 !important;
+  margin-top: 8px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 6px !important;
+  padding: 0 15px !important;
+}
+.multipls{
+  display: flex;
+  margin-top: 65px;
+}
+
+.sujet{
+  width: 90% !important;
+}
+.responsable select{
+  width: 200% !important;
+}
+.date input{
+  width: 182%;
+  margin-left: 80%;
+}
+
+input[file]{
+  width: 278px;
+}
+
+.containerDesic header {
+  font-size: 1.5rem !important;
+  color: #333 !important;
+  font-weight: 500!important;
+  text-align: center!important;
+}
+.containerDesic .formDes {
+  margin-top: 30px !important;
+}
+.formDes .input-box {
+  width: 100% !important;
+  margin-top: 20px !important;
+}
+.input-box label {
+  color: #333 !important;
+}
+.formDes :where(.input-box input, .select-box) {
+  position: relative !important;
+  height: 50px !important;
+  width: 100% !important;
+  outline: none !important;
+  font-size: 1rem !important;
+  color: #707070 !important;
+  margin-top: 8px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 6px !important;
+  padding: 0 15px !important;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1) !important;
+}
+.formDes .column {
+  display: flex !important;
+  column-gap: 15px !important;
+}
+.formDes .gender-box {
+  margin-top: 20px !important;
+}
+.gender-box h3 {
+  color: #333 !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  margin-bottom: 8px !important;
+}
+.formDes :where(.gender-option, .gender) {
+  display: flex !important;
+  align-items: center !important;
+  column-gap: 50px !important;
+  flex-wrap: wrap !important;
+}
+.formDes .gender {
+  column-gap: 5px !important;
+}
+.gender input {
+  accent-color: rgb(130, 106, 251) !important;
+}
+.formDes :where(.gender input, .gender label) {
+  cursor: pointer !important;
+}
+.gender label {
+  color: #707070 !important;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px !important;
+}
+.select-box select {
+ 
+}
+.formDes button {
+  height: 55px !important;
+  width: 100% !important;
+  color: #fff !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  margin-top: 30px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  background: rgb(130, 106, 251) !important;
+}
+.formDes button:hover {
+  background: rgb(88, 56, 250) !important;
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .formDes .column {
+    flex-wrap: wrap;
+  }
+  .formDes :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}

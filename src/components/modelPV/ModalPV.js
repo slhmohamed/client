@@ -28,8 +28,7 @@ function ModalPV ({ setOpenModal }) {
     let formData = new FormData();
     formData.append('rapport', rapport_file);
     formData.append('sujet', sujet);
-    formData.append('date', date);
-    formData.append('event', event.id);
+     formData.append('event', event.id);
     axios.post('http://localhost:5000/api/pv/newPV',
      formData)
       .then(function (response) {
@@ -61,7 +60,7 @@ function ModalPV ({ setOpenModal }) {
               X
             </button>
             <section class="containerDesic">
-              <header>Ajouter Desicion</header>
+              <header>Ajouter PV</header>
               <form   onSubmit={handleSubmit}  class="formDes">
 
                 <div className='inputs'>
@@ -72,9 +71,7 @@ function ModalPV ({ setOpenModal }) {
                   <div className='responsable'>
                      <input  onChange={handleImagePreview} type='file'/>
                   </div>
-                  <div className='date'>
-                    <input value={date}  onChange={e => setDate(e.target.value)} className='input-Desic' type='date' placeholder='' />
-                  </div>
+                  
 
                 </div>
                 <button className='submit-desicion'>Ajouter</button>

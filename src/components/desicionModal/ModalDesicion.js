@@ -7,8 +7,11 @@ import { Toaster, toast } from 'react-hot-toast';
 function ModalDesicion({ setOpenModal }) {
   const [users, setUsers] = useState([]);
   const [sujet, setSujet] = useState('')
-  const [date, setDate] = useState('')
+  const [dateE, setDateE] = useState('')
   const [user, setUser] = useState('')
+  const [etat, setEtat] = useState('')
+  const [dateL, setDateL] = useState('')
+
   const event=useParams()
   const getAllUser = () => {
     axios.get('http://localhost:5000/api/user/getAll')
@@ -32,8 +35,9 @@ function ModalDesicion({ setOpenModal }) {
     axios.post('http://localhost:5000/api/desicion/newDesicion',
      {
       responsable: user,
-        event:event.id,
-        date:date,
+        dateLancement:dateL,
+        dateExecution:dateE,
+        status:etat,
         sujet:sujet
       })
       .then(function (response) {
@@ -81,7 +85,22 @@ function ModalDesicion({ setOpenModal }) {
                     </select>
                   </div>
                   <div className='date'>
-                    <input value={date}  onChange={e => setDate(e.target.value)} className='input-Desic' type='date' placeholder='' />
+                    <input value={dateL}  onChange={e => setDateL(e.target.value)} className='input-Desic' type='date' placeholder='' />
+                  </div>
+
+                </div>
+                <div className='inputs multipls'>
+                  <div className='responsable'>
+                    <select className='input-Desic' value={etat}  onChange={e => setEtat(e.target.value)}  >
+                       
+                        <option value="En cours">En cours </option>
+                        <option value="Pas encore">Pas encore </option>
+                        <option value="Termine">Termine </option>
+                      
+                    </select>
+                  </div>
+                  <div className='date'>
+                    <input value={dateE}  onChange={e => setDateE(e.target.value)} className='input-Desic' type='date' placeholder='' />
                   </div>
 
                 </div>

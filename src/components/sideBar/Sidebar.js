@@ -33,7 +33,7 @@ function Sidebar() {
     <div className='avatar'>
     {
                         avatar!='' ?  <img class="avatar avProfile border-gray" src={`http://localhost:5000/${avatar}`}   alt="..." />
-                        : <p> <img class="avatar border-gray" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg" alt="..." />
+                        : <p> <img class="avatar avProfile border-gray" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-default-avatar-profile-icon-vector-social-media-user-image-vector-illustration-227787227.jpg" alt="..." />
                         </p>
                     }    <h2 className='user'>{user}</h2>
     <h3 className='role'>{role}</h3>

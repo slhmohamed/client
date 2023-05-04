@@ -4,9 +4,12 @@ import Navbar from '../../../components/navBar/Navbar'
 import './ListeDesicion.css'
 import axios from 'axios'
 import { format } from 'date-fns'
+import ModalDesicion from '../../../components/desicionModal/ModalDesicion'
 
 function ListeDesicion() {
     const [desicions, setDesicion] = useState([])
+    const [modalOpen, setModalOpen] = useState(false);
+
  
     useEffect(() => {
         axios.get('http://localhost:5000/api/desicion/getAll')
@@ -59,10 +62,17 @@ function ListeDesicion() {
                             <i class='bx bx-home-alt-2'></i> Dashboard / <i class='bx bxs-calendar'></i> Liste des désicions
                         </i>
                     </div>
-                    {desicions?.length
+                    {desicions?.length 
                         ?
                         <div class="containerU">
+                            <button className='ajoutDesi'  onClick={() => {
+                                setModalOpen(true);
+           
+           console.log("ok");
+           
+         }}>Ajouter desicion</button>
                             <div className='headere-ld'>
+                            
                                 <h2 className='title-ld'>Liste des désicions </h2>
 
                                 <button onClick={getDesicions('Tous')} className='b-ld t'>Tous</button>
@@ -77,12 +87,12 @@ function ListeDesicion() {
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Status</th>
-                                            <th> </th>
-                                            <th>Date</th>
-                                            <th>Responsable</th>
-                                            <th>Evenément</th>
                                             <th>Sujet</th>
+                                            <th> </th>
+                                            <th>Date de lancement</th>
+                                            <th>Seperviseur</th>
+                                            <th>Date d'execution</th>
+                                            <th>Etat d'avancement</th>
 
                                         </tr>
                                     </thead>
@@ -91,14 +101,14 @@ function ListeDesicion() {
                                             desicions && desicions.map((el, i) => {
                                                 return (
                                                     <tr>
-                                                        <td>{el.status}</td>
-                                                        <td>{etat(el.date)} </td>
-                                                        <td>{formatD(el.date)} </td>
-                                                        <td>{el.responsable?.nom} {el.responsable?.prenom}</td>
-                                                        <td>{el.event.title}</td>
-
                                                         <td>{el.sujet}</td>
-
+                                                        <td>{etat(el.dateExecution)} </td>
+                                                        <td>{formatD(el.dateLancement)} </td>
+                                                        <td>{el.responsable?.nom} {el.responsable?.prenom}</td>
+                                                         
+                                                        <td>{formatD(el.dateExecution)} </td>
+                                                        
+                                                        <td>{el.status}</td>
                                                     </tr>
                                                 )
                                             }
@@ -119,7 +129,7 @@ function ListeDesicion() {
             </section>
 
 
-
+            {modalOpen && <ModalDesicion setOpenModal={setModalOpen} />}
 
         </div>
 

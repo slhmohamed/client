@@ -22,6 +22,8 @@ const getComments=()=>{
         console.log(result);
         setComments(result.data.data.remarque)
         
+
+        
        })
 }
     useEffect(()=>{
@@ -29,18 +31,21 @@ const getComments=()=>{
         getComments()
     axios.get('http://localhost:5000/api/pv/getAllPV/'+param.id)
      .then(function (response) {
+      console.log(response);
         const convertedPV =  response.data.data.map(pvE=>{
  
             return{
               sujet: pvE.sujet,
-             date: format(new Date(pvE.date), 'yyyy/MM/dd') ,
+             date: format(new Date(pvE.createdAt), 'yyyy/MM/dd') ,
               rapport:"http://localhost:5000/"+pvE.rapport,
               rapportFinale:pvE.rapportFinale,
               id: pvE._id,  
             }
             
           })
+          console.log(convertedPV);
           setPVS(convertedPV);
+
     
             
            

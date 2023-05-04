@@ -30,11 +30,11 @@ const UpdateEvent = ( ) => {
     //using form-hook to register event data
     useEffect(()=>{
      axios.get('http://localhost:5000/api/event/getShow/'+id).then(result=>{
-      console.log(result.data);
-      setTitle(result.data.title)
-      setStart(new Date(result.data.start))
-      setEnd(new Date(result.data.end))
-      setDescribe(result.data.describe)
+   
+      setTitle(result.data.data.title)
+      setStart( new Date(result.data.data.start))
+   setEnd ( new Date(result.data.data.end))
+      setDescribe(result.data.data.describe)
      })
        
        
@@ -53,7 +53,7 @@ const UpdateEvent = ( ) => {
        .then(function (response) {
          console.log(response);
         
-         toast.success('Evenement ajouté avec succès');  
+         toast.success('Evenement modifié avec succès');  
        })
        .catch(function (error) {
         setError('Échec de la validation de l\'événement : fin : La fin de l\'événement doit précéder d\'au moins une heure l\'heure de l\'événement.')

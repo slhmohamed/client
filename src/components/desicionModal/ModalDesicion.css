@@ -93,12 +93,27 @@
   width: 200% !important;
 }
 .date input{
-  width: 182%;
-  margin-left: 80%;
+  width: 48% !important;
+  display: inline-grid;
+  margin-left: 39% !important;
 }
 
 input[file]{
   width: 278px;
+}
+.details-date{
+  margin-left: 210px;
+}
+.formDes .multipls{
+  margin-top: 15px;
+}
+
+.details-dateE{
+  margin-left: 190px;
+}
+.date-g{
+  display: inline-grid;
+  margin-left: -30%;
 }
 
 .containerDesic header {
@@ -192,4 +207,11 @@ input[file]{
   .formDes :where(.gender-option, .gender) {
     row-gap: 15px;
   }
+}
+
+.formDes .inputs{
+}
+.dateEx{
+  margin-left: 120px;
+    width: 60%;
 }

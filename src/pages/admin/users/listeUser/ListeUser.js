@@ -5,10 +5,14 @@ import Sidebar from '../../../../components/sideBar/Sidebar'
 import Navbar from '../../../../components/navBar/Navbar'
 import axios from 'axios';
 import { Toaster, toast } from 'react-hot-toast';
+import Confirm from '../../../../components/confirm/Confirm';
+import PopUp from '../../../../components/confirm/PopUp';
 function ListeUser() {
   const [users,setUsers]=useState([])
   const [key,setKey]=useState([])
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpenDelete, setModalOpenDelete] = useState(false);
+  const [id,setId]=useState('') 
 
 
  const  getAllUser =()=>{
@@ -40,20 +44,34 @@ function ListeUser() {
       });
   
   };
+  const handleTrue = () => {
+    axios.delete('http://localhost:5000/api/user/deleteUser/'+id)
+    .then(function (response) {
+      setToggle(false)
+
+      getAllUser();
+      toast.success('Utilisateur a éte supprimé');  
+     
+    })
+    .catch(function (error) {
+      console.log(error);
+    });  };
+  const [toggle, setToggle] = useState(false);
+  const handleClick = () => {
+    setToggle(!toggle);
+  };
+
+  const handleFalse = () => {
+    setToggle(!toggle);
+  };
+
   const deleteUser  = (id)=>{
      
  console.log(id);
     
-    axios.delete('http://localhost:5000/api/user/deleteUser/'+id)
-      .then(function (response) {
- 
-        this.getAllUser();
-        toast.success('Utilisateur a éte supprimé');  
-       
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    /**/
+      setToggle(true)
+      setId(id)
   
  
 
@@ -124,7 +142,17 @@ function ListeUser() {
   </section>
  
   
-  {modalOpen && <Modal setOpenModal={setModalOpen} />}
+  {modalOpen && <Modal setOpenModal={setModalOpen} getAll={getAllUser} />}
+     <PopUp
+        toggle={toggle}
+        handleTrue={handleTrue}
+        handleFalse={handleFalse}
+        trueButtonName="Confirmer"
+        falseButtonName="Fermer"
+        title="Confirmed Supprision"
+        message="Are you want to delete?"
+      /> 
+
  
   </div>
   

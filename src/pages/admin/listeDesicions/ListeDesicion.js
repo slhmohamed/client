@@ -12,12 +12,14 @@ function ListeDesicion() {
 
  
     useEffect(() => {
-        axios.get('http://localhost:5000/api/desicion/getAll')
-            .then((response) => {
-                setDesicion(response.data.data)
-            })
+        getAllDesicion()
     }, [ ])
-
+const getAllDesicion=()=>{
+    axios.get('http://localhost:5000/api/desicion/getAll')
+    .then((response) => {
+        setDesicion(response.data.data)
+    })
+}
     const getDesicions=(param)=>()=>{
         axios.get('http://localhost:5000/api/desicion/getDesicions/'+param)
         .then((response) => {
@@ -62,25 +64,27 @@ function ListeDesicion() {
                             <i class='bx bx-home-alt-2'></i> Dashboard / <i class='bx bxs-calendar'></i> Liste des désicions
                         </i>
                     </div>
+
+                    <button className='ajoutDesi addDes'  onClick={() => {
+                                setModalOpen(true);
+           
+           
+         }}>Ajouter desicion</button>
+           <div className='headere-ld'>
+                            
+                            <h2 className='title-ld'>Liste des désicions </h2>
+
+                            <button onClick={getDesicions('Tous')} className='b-ld t'>Tous</button>
+                            <button onClick={getDesicions('Pas encore')} className='b-ld pe'>Pas encore</button>
+                            <button onClick={getDesicions('Encours')} className='b-ld e'>Encours</button>
+                            <button onClick={getDesicions('Effectué avec succès')} className='b-ld eas'>Effectué avec succé</button>
+
+                        </div>
                     {desicions?.length 
                         ?
                         <div class="containerU">
-                            <button className='ajoutDesi'  onClick={() => {
-                                setModalOpen(true);
-           
-           console.log("ok");
-           
-         }}>Ajouter desicion</button>
-                            <div className='headere-ld'>
                             
-                                <h2 className='title-ld'>Liste des désicions </h2>
-
-                                <button onClick={getDesicions('Tous')} className='b-ld t'>Tous</button>
-                                <button onClick={getDesicions('Pas encore')} className='b-ld pe'>Pas encore</button>
-                                <button onClick={getDesicions('Encours')} className='b-ld e'>Encours</button>
-                                <button onClick={getDesicions('Effectué avec succès')} className='b-ld eas'>Effectué avec succé</button>
-
-                            </div>
+                          
 
 
                             <div>    <div class="wrapper-table">
@@ -129,7 +133,7 @@ function ListeDesicion() {
             </section>
 
 
-            {modalOpen && <ModalDesicion setOpenModal={setModalOpen} />}
+            {modalOpen && <ModalDesicion setOpenModal={setModalOpen} getAll={getAllDesicion} />}
 
         </div>
 

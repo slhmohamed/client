@@ -3,13 +3,16 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
-function ModalPV ({ setOpenModal }) {
+import './PV.css'
+import PV from './../calandar/PV';
+function ModalPV ({ setOpenModal,getAll }) {
   
   const [sujet, setSujet] = useState('')
   const [date, setDate] = useState('')
   const [user, setUser] = useState('')
   const [rapport_file, setRapport_file] = useState(null)
   const [image_preview, setImage_preview] = useState('')
+  const [id,setId]=useState('');
   const event=useParams();
    // Image Preview Handler
    const handleImagePreview = (e) => {
@@ -20,7 +23,7 @@ function ModalPV ({ setOpenModal }) {
     setRapport_file(rapport_as_files)
     setImage_preview(image_as_base64)
   }
-   
+ 
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -33,7 +36,9 @@ function ModalPV ({ setOpenModal }) {
      formData)
       .then(function (response) {
         toast.success('PV ajouté avec success')
-         
+         setSujet('')
+         setRapport_file('')
+         getAll()
         
       })
       .catch(function (error) {
@@ -63,11 +68,14 @@ function ModalPV ({ setOpenModal }) {
               <header>Ajouter PV</header>
               <form   onSubmit={handleSubmit}  class="formDes">
 
-                <div className='inputs'>
+                <div className='inputs pv-inputs'>
+                  <label className='pv-label'>Sujet</label>
                   <input value={sujet}  onChange={e => setSujet(e.target.value)} className='input-Desic sujet' type='text' placeholder='sujet' />
 
                 </div>
-                <div className='inputs multipls'>
+                <div className='inputs multipls pv-inputs'>
+                <label className='pv-label'>Rappor</label>
+
                   <div className='responsable'>
                      <input  onChange={handleImagePreview} type='file'/>
                   </div>

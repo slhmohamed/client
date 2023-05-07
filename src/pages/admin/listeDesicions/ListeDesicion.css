@@ -92,6 +92,9 @@ input[type="checkbox"] {
     width: 16px;
     height: 16px;
 }
+.addDes{
+    margin-left: 25px !important;
+}
 input[type="checkbox"]:checked , input[type="checkbox"]:hover , input[type="checkbox"]:active , input[type="checkbox"]:focus {
     color: #4C4B16;
     background: #4C4B16;

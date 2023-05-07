@@ -3,7 +3,7 @@ import './ModalEntreprise.css'
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 
-function ModalEntreprise({ setOpenModal }) {
+function ModalEntreprise({ setOpenModal,getAll }) {
   const [form, setForm] = useState({});
   
    
@@ -26,6 +26,7 @@ function ModalEntreprise({ setOpenModal }) {
         console.log(response);
         setOpenModal(false);
         toast.success('Entreprise ajouté avec succès');  
+        getAll()
       })
       .catch(function (error) {
        
@@ -36,7 +37,12 @@ function ModalEntreprise({ setOpenModal }) {
   };
   return (
     <div className='modal'> 
+     <Toaster 
+  position="top-center"
+  reverseOrder={false}
+/>
            <div className="modalBackground">
+         
       <div className="modalContainer">
         <div className="titleCloseBtn">
           <button className="close"

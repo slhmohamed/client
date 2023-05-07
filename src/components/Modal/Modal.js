@@ -3,7 +3,7 @@ import "./Modal.css";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 
-function Modal({ setOpenModal }) {
+function Modal({ setOpenModal,getAll }) {
     const [nom,setNom]=useState("");
     const [prenom,setPrenom]=useState("");
     const [email,setEmail]=useState("");
@@ -33,6 +33,7 @@ function Modal({ setOpenModal }) {
           .then(function (response) {
             console.log(response);
             setOpenModal(false);
+            getAll()
             toast.success('Utilisateur ajouté avec succès');  
           })
           .catch(function (error) {

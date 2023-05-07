@@ -27,6 +27,7 @@ import UpdateDesicion from './components/calandar/UpdateDesicion';
 import ListeDesicion from './pages/admin/listeDesicions/ListeDesicion';
 import Room from './pages/admin/room/Room';
 import PV from './components/calandar/PV';
+import ChatRoom from './pages/chat/ChatRoom';
  
     function App() {
   const [connected,setConnected]=useState(false)

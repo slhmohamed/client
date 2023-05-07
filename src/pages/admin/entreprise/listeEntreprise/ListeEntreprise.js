@@ -3,14 +3,15 @@ import Sidebar from '../../../../components/sideBar/Sidebar'
 import Navbar from '../../../../components/navBar/Navbar'
 import './listeEntreprise.css'
 import axios from 'axios'
-import { toast } from 'react-hot-toast'
+import { Toaster, toast } from 'react-hot-toast'
 import Modal from '../../../../components/Modal/Modal'
 import ModalEntreprise from '../../../../components/ModalEntreprise/ModalEntreprise'
+import PopUp from '../../../../components/confirm/PopUp'
 function ListeEntreprise() {
   const [entreprises,setEntreprise]=useState([])
   const [key,setKey]=useState([])
   const [modalOpen, setModalOpen] = useState(false);
- 
+  const [id,setId]=useState('') 
 
 
  const  getAllEntreprise =()=>{
@@ -27,7 +28,7 @@ function ListeEntreprise() {
     getAllEntreprise()
       
   
-  },[entreprises])
+  },[])
 
   const searchHandle= e => {
     e.preventDefault();
@@ -42,20 +43,30 @@ function ListeEntreprise() {
       });
   
   };
+  const handleTrue = () => {
+    axios.delete('http://localhost:5000/api/entreprise/deleteEntreprise/'+id)
+    .then(function (response) {
+      setToggle(false)
+
+      getAllEntreprise();
+      toast.success('Entreprise a éte supprimé');  
+     
+    })
+    .catch(function (error) {
+      console.log(error);
+    });  };
+  const [toggle, setToggle] = useState(false);
+  const handleClick = () => {
+    setToggle(!toggle);
+  };
+
+  const handleFalse = () => {
+    setToggle(!toggle);
+  };
   const deleteEntreprise  = (id)=>{
      
- console.log(id);
-    
-    axios.delete('http://localhost:5000/api/entreprise/deleteEntreprise/'+id)
-      .then(function (response) {
- 
-        this.getAllEntreprise();
-        toast.success('Entreprise a éte supprimé');  
-       
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    setToggle(true)
+    setId(id)
   }
   return (
     
@@ -64,6 +75,10 @@ function ListeEntreprise() {
   <section class="home-section">
    
 <Navbar/>
+<Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
 
     <div class="home-content">
     <div className='navigation'>
@@ -121,7 +136,16 @@ function ListeEntreprise() {
 </div>
     </div>
   </section>
-  {modalOpen && <ModalEntreprise setOpenModal={setModalOpen} />}
+  {modalOpen && <ModalEntreprise setOpenModal={setModalOpen} getAll={getAllEntreprise} />}
+  <PopUp
+        toggle={toggle}
+        handleTrue={handleTrue}
+        handleFalse={handleFalse}
+        trueButtonName="Confirmer"
+        falseButtonName="Fermer"
+        title="Confirmed Supprision"
+        message="Are you want to delete?"
+      /> 
   </div>
   )
 }

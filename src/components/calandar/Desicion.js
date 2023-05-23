@@ -18,7 +18,7 @@ function Desicion() {
     const param=useParams()
 
 const getComments=()=>{
-  console.log("get comments");
+   
   axios.get('http://localhost:5000/api/event/getShow/'+param.id).then(result=>{
         console.log(result);
         setComments(result.data.data.remarque)
@@ -28,27 +28,31 @@ const getComments=()=>{
     useEffect(()=>{
       
         getComments()
-    axios.get('http://localhost:5000/api/desicion/getSingle/'+param.id)
-     .then(function (response) {
-        
-      
-      const convertedDesicion =  response.data.data.map(evt=>{
- 
-        return{
-          responsable: evt.responsable,
-         date: format(new Date(evt.date), 'yyyy/MM/dd') ,
-          event: evt.event ,
-          remarques: evt.remarques,
-          id: evt._id,
-          status:evt.status,
-          sujet:evt.sujet
-        }
-      })
-
-        
-       setDesicions(convertedDesicion)
-     })
+        dec()
+  
     },[])
+
+    const dec=()=>{
+      axios.get('http://localhost:5000/api/desicion/getSingle/'+param.id)
+      .then(function (response) {
+         
+       
+       const convertedDesicion =  response.data.data.map(evt=>{
+         return{
+           responsable: evt.responsable,
+          date: format(new Date(evt.date), 'yyyy/MM/dd') ,
+           event: evt.event ,
+           remarques: evt.remarques,
+           id: evt._id,
+           status:evt.status,
+           sujet:evt.sujet
+         }
+       })
+ 
+         
+        setDesicions(convertedDesicion)
+      })
+    }
 
     const onSubmitComment = e =>{
       e.preventDefault()
@@ -101,7 +105,7 @@ const getComments=()=>{
         </div>
 
   </div>
-  {desicions?.length
+  {desicions?.length>0
             ?
     <div class="containerDesi">
   

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Navbar.css'
 import jwt_decode from 'jwt-decode'
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [user,setUser]=useState('')
@@ -23,7 +24,14 @@ function Navbar() {
     <div class="search-box">
       <input type="text" placeholder="Search..."/>
       <i class='bx bx-search' ></i>
+    </div >
+    <div className='chat-h'  >
+    <Link to="/chat">
+    <i class='bx bx-message-rounded-dots'></i>
+    Chat
+    </Link>
     </div>
+
     <div class="profile-details">
     {
                         avatar!='' ?  <img class="avatar border-gray" src={`http://localhost:5000/${avatar}`}   alt="..." />

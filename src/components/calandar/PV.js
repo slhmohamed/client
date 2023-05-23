@@ -11,10 +11,11 @@ import { Toaster, toast } from 'react-hot-toast';
 import PopUp from '../confirm/PopUp';
 import UpdatePV from './UpdatePV';
  
+ 
 function PV() {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalUpdateOpen, setModalUpdateOpen] = useState(false);
-
+    const [role,setRole]=useState('')
     const [pvs,setPVS]=useState([]);
     const [comment,setComment]=useState('')
     const [comments,setComments]=useState([])
@@ -68,6 +69,9 @@ if(pvE.rapportFinale==''){
   })
 }
     useEffect(()=>{
+      const token=localStorage.getItem('token');
+       
+      setRole(jwt_decode(token).role);
       getAllPV()
         getComments()
    
@@ -144,12 +148,11 @@ if(pvE.rapportFinale==''){
     <h2>Liste des PVs  </h2>
   
   <div className='buttons'>
-    
+  {role!='Unite' ?
     <button className='ajoutDesi'  onClick={() => {
           setModalOpen(true);
-          console.log("ok");
-          console.log(modalOpen);
-        }}>Ajouter PV</button>
+          
+        }}>Ajouter PV</button>:<p></p>}
         <div className='coment'>
           <textarea placeholder='Entre votre commentaire' value={comment}  onChange={e => setComment(e.target.value)}></textarea>
           <button className='b-coment' onClick={onSubmitComment}>Ajouter</button>

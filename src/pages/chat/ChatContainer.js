@@ -93,7 +93,7 @@ export default function ChatContainer({ currentChat, socket }) {
                   message.fromSelf ? "sended" : "recieved"
                 }`}
               >
-                <div className="content ">
+                <div className="content " style={{color:"white"}}>
                   <p>{message.message}</p>
                 </div>
               </div>

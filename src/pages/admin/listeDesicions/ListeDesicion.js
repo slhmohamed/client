@@ -3,15 +3,20 @@ import Sidebar from '../../../components/sideBar/Sidebar'
 import Navbar from '../../../components/navBar/Navbar'
 import './ListeDesicion.css'
 import axios from 'axios'
-import { format } from 'date-fns'
+import { format } from 'date-fns';
+import jwt_decode from 'jwt-decode'
 import ModalDesicion from '../../../components/desicionModal/ModalDesicion'
-
-function ListeDesicion() {
+import { Toaster, toast } from 'react-hot-toast'
+ function ListeDesicion() {
+    const [role,setRole]=useState('')
     const [desicions, setDesicion] = useState([])
     const [modalOpen, setModalOpen] = useState(false);
 
  
     useEffect(() => {
+        const token=localStorage.getItem('token');
+       
+      setRole(jwt_decode(token).role);
         getAllDesicion()
     }, [ ])
 const getAllDesicion=()=>{
@@ -50,6 +55,28 @@ const getAllDesicion=()=>{
             return <span className='temp'>Vous avez encore {diff}  jours</span>
         }
     }
+  const  handleChange=(e,param1)=>{
+    console.log(e.target.value);
+    console.log(param1);
+
+    axios.put('http://localhost:5000/api/desicion/updateStatus/'+param1,
+    {
+      value:e.target.value,
+       
+     
+
+     })
+     .then(function (response) {
+ 
+      
+       toast.success('Desicion status modifié avec succès');  
+       getAllDesicion()
+     })
+     .catch(function (error) {
+           console.log(error.response.data.errors.message);
+     });
+      
+    }
     return (
         <div>
 
@@ -57,19 +84,22 @@ const getAllDesicion=()=>{
             <section class="home-section">
 
                 <Navbar />
-
+                <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
                 <div class="home-content">
                     <div className='navigation'>
                         <i >
                             <i class='bx bx-home-alt-2'></i> Dashboard / <i class='bx bxs-calendar'></i> Liste des désicions
                         </i>
                     </div>
-
+                    {role=='Unite' ?
                     <button className='ajoutDesi addDes'  onClick={() => {
                                 setModalOpen(true);
            
            
-         }}>Ajouter desicion</button>
+         }}>Ajouter desicion</button>:<p></p>}
            <div className='headere-ld'>
                             
                             <h2 className='title-ld'>Liste des désicions </h2>
@@ -112,7 +142,17 @@ const getAllDesicion=()=>{
                                                          
                                                         <td>{formatD(el.dateExecution)} </td>
                                                         
-                                                        <td>{el.status}</td>
+                                                        {role!='Unite' ?     <td>
+
+                                                        <select className='input-Desic' value={el.status}  onChange={event => handleChange(event, el._id)} >
+                       
+                       <option value="En cours">En cours </option>
+                       <option value="Pas encore">Pas encore </option>
+                       <option value="Termine">Termine </option>
+                     
+                   </select>
+                                                        </td>:<td>{el.status}</td>
+                                                        }
                                                     </tr>
                                                 )
                                             }

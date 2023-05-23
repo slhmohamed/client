@@ -7,11 +7,15 @@ import { Toaster, toast } from 'react-hot-toast'
 import Modal from '../../../../components/Modal/Modal'
 import ModalEntreprise from '../../../../components/ModalEntreprise/ModalEntreprise'
 import PopUp from '../../../../components/confirm/PopUp'
+import jwt_decode from 'jwt-decode'
+import ModalUpdateEntreprise from '../../../../components/ModalEntreprise/ModalUpdateEntreprise'
 function ListeEntreprise() {
   const [entreprises,setEntreprise]=useState([])
   const [key,setKey]=useState([])
   const [modalOpen, setModalOpen] = useState(false);
   const [id,setId]=useState('') 
+  const [role,setRole]=useState('')
+  const [updatemodalOpen,setUpdate]=useState(false)
 
 
  const  getAllEntreprise =()=>{
@@ -25,6 +29,9 @@ function ListeEntreprise() {
       
   }
   useEffect(() => {
+    const token=localStorage.getItem('token');
+       
+      setRole(jwt_decode(token).role);
     getAllEntreprise()
       
   
@@ -32,9 +39,9 @@ function ListeEntreprise() {
 
   const searchHandle= e => {
     e.preventDefault();
-    axios.get('http://localhost:5000/api/user/searchUser/'+key)
+    axios.get('http://localhost:5000/api/entreprise/searchCompany/'+key)
       .then(function (response) {
-        console.log(response);
+         
         setEntreprise(response.data.data)
        
       })
@@ -92,13 +99,16 @@ function ListeEntreprise() {
     <div className='searchs'>
       <form onSubmit={searchHandle} className='form-search'>
     <input type='text' className='search' placeholder='Rechercher' value={key}  onChange={e => setKey(e.target.value)}/>
+   
     <button className='bSearch' type='submit'  ><i class='bx bx-search-alt-2 icon'></i></button>
     </form>
     </div>
+    {role=='Unite' 
+                        ?
     <button     onClick={() => {
           setModalOpen(true);
           
-        }} className='ajout'>Ajouter entreprise</button>
+        }} className='ajout'>Ajouter entreprise</button>:<p></p>}
 
   </div>
 <div class="containerLE">
@@ -124,8 +134,18 @@ function ListeEntreprise() {
 				<div class="table-data">{entreprise.email}</div>
 				<div class="table-data">{entreprise.telephone}</div>
 				<div class="table-data">{entreprise.adresse}</div>
-        <div class="table-data"><i  onClick={() => deleteEntreprise(entreprise._id)} class='bx bxs-trash'></i></div>
-			</div>
+        <div class="table-data">
+        <i class='bx bxs-edit-alt'onClick={() => {
+          setUpdate(true);
+          setId(entreprise._id)
+          
+        }} ></i>
+          <i  onClick={() => deleteEntreprise(entreprise._id)} class='bx bxs-trash'></i>
+          
+          
+          </div>
+			
+      </div>
  )
 } 
 )
@@ -137,6 +157,7 @@ function ListeEntreprise() {
     </div>
   </section>
   {modalOpen && <ModalEntreprise setOpenModal={setModalOpen} getAll={getAllEntreprise} />}
+  {updatemodalOpen && <ModalUpdateEntreprise setUpdate={setUpdate} getAll={getAllEntreprise} id={id} />}
   <PopUp
         toggle={toggle}
         handleTrue={handleTrue}

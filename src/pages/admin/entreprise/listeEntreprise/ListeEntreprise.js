@@ -120,7 +120,9 @@ function ListeEntreprise() {
 			<div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Email</a></div>
 			<div class="header__item"><a id="losses" class="filter__link filter__link--number" href="#">Télephone</a></div>
 			<div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Adresse</a></div>
-      <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Action</a></div>
+      {role=='Unite'?
+      <div class="header__item">
+        <a id="total" class="filter__link filter__link--number" href="#">Action</a></div>:<p></p>}
 
 		</div>
 		<div class="table-content">	
@@ -134,16 +136,23 @@ function ListeEntreprise() {
 				<div class="table-data">{entreprise.email}</div>
 				<div class="table-data">{entreprise.telephone}</div>
 				<div class="table-data">{entreprise.adresse}</div>
-        <div class="table-data">
+        {
+        role=='Unite' ?   
+         <div class="table-data">
+     
         <i class='bx bxs-edit-alt'onClick={() => {
           setUpdate(true);
           setId(entreprise._id)
           
-        }} ></i>
+        }} >
+
+        </i>
           <i  onClick={() => deleteEntreprise(entreprise._id)} class='bx bxs-trash'></i>
+        
           
+          </div>  : <p></p>
           
-          </div>
+          }
 			
       </div>
  )

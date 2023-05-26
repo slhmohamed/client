@@ -13,6 +13,7 @@ function ListeUser() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalOpenDelete, setModalOpenDelete] = useState(false);
   const [id,setId]=useState('') 
+  const [role,setRole]=useState('') 
 
 
  const  getAllUser =()=>{
@@ -27,7 +28,7 @@ function ListeUser() {
   }
   useEffect(() => {
     getAllUser()
-      
+      setRole(localStorage.getItem('role'))
   
   },[])
 
@@ -104,12 +105,20 @@ function ListeUser() {
     <button className='bSearch' type='submit'  ><i class='bx bx-search-alt-2 icon'></i></button>
     </form>
     </div>
+
+    {role=='Unite'?
     <button     onClick={() => {
           setModalOpen(true);
           console.log("ok");
           console.log(modalOpen);
-        }} className='ajout'>Ajouter utilisateurs</button>
-
+        }} className='ajout'>Ajouter utilisateurs</button>:<p></p>}
+        {role=='SuperAdmin'?
+    <button     onClick={() => {
+          setModalOpen(true);
+          console.log("ok");
+          console.log(modalOpen);
+        }} className='ajout'>Ajouter utilisateurs</button>:<p></p>}
+          
   </div>
   <ul class="responsive-table">
     <li class="table-header">
@@ -117,7 +126,10 @@ function ListeUser() {
       <div class="col col-2">Prenom</div>
       <div class="col col-3">Email</div>
       <div class="col col-4">Role</div>
-      <div class="col col-5">Action</div>
+      {role=='Unite'?
+      <div class="col col-5">Action</div>:<p></p>}
+            {role=='SuperAdmin'?
+      <div class="col col-5">Action</div>:<p></p>}
     </li>
     {
  users && users.map((user, i) => {
@@ -127,7 +139,12 @@ function ListeUser() {
       <div class="col col-2" data-label="Customer Name">{user.prenom}</div>
       <div class="col col-3" data-label="Amount">{user.email}</div>
       <div class="col col-4" data-label="Payment Status">{user.role}</div>
-      <div class="col col-5" data-label="Payment Status"><i  onClick={() => deleteUser(user._id)} class='bx bxs-trash'></i></div>
+      {role=='Unite'?
+      <div class="col col-5" data-label="Payment Status">
+        <i  onClick={() => deleteUser(user._id)} class='bx bxs-trash'></i></div>:<p></p>}
+        {role=='SuperAdmin'?
+      <div class="col col-5" data-label="Payment Status">
+        <i  onClick={() => deleteUser(user._id)} class='bx bxs-trash'></i></div>:<p></p>}
     </li>
   )
   } 

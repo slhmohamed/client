@@ -27,7 +27,7 @@ export default function ChatContainer({ currentChat, socket }) {
         setMessages(response.data);
     })
    
-  }, [currentChat]);
+  }, [messages]);
  
   useEffect(() => {
     

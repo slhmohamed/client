@@ -30,6 +30,7 @@ function Login() {
       .then(function (response) {
         console.log(response.data.token);
         localStorage.setItem('token',response.data.token);
+        localStorage.setItem('role',response.data.role);
         navigate('/dashboard')
       })
       .catch(function (error) {

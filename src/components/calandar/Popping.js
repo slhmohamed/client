@@ -1,5 +1,5 @@
 import { Modal, Button } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
  
 import * as moment from "moment"
 
@@ -11,11 +11,15 @@ import "./Poping.css"
 
  const Popping = ({open, handleClose, event, deleteEventApi, renderStatus, rerender})=> {
   const navigate = useNavigate();
+
+  const [role,setRole]=useState('')
   const {id, describe, title } = event;
   const start= moment(event.start).format("ddd DD MMM YY LT");
   const end= moment(event.end).format("ddd DD MMM YY LT");
 
-
+useEffect(()=>{
+  setRole(localStorage.getItem('role'))
+})
   const handleDelete =async () => {
     if(window.confirm('Are sure want to delete?')) {
     axios.delete('http://localhost:5000/api/event/deletEvent/'+id)
@@ -58,14 +62,23 @@ import "./Poping.css"
              <p className="col small text-muted text-center pb-0 mb-0">to: {end}</p>
            </div>
          </Modal.Body>
+       
+         {role=='Unite'  ?
          <Modal.Footer>
     
            <Link className="b-update bt"    to={`/pv/${id}`} ><Button className="b-update" variant="success">PV</Button></Link>
            <Link className="b-update bt" to={`/event/update/${id}`}><Button className="b-update" variant="success">Update</Button></Link>
-           <Link className="b-update bt" to={`/event/desicion/${id}`}><Button className="b-update" variant="success">Desicion</Button></Link>
-           <Button className="b-delete bt" variant="danger" onClick={handleDelete}>Delete</Button>
+            <Button className="b-delete bt" variant="danger" onClick={handleDelete}>Delete</Button>
            
-       </Modal.Footer>
+       </Modal.Footer>:<p></p>}
+       {role=='Ministre'  ?
+         <Modal.Footer>
+    
+           <Link className="b-update bt"    to={`/pv/${id}`} ><Button className="b-update" variant="success">PV</Button></Link>
+           <Link className="b-update bt" to={`/event/update/${id}`}><Button className="b-update" variant="success">Update</Button></Link>
+            <Button className="b-delete bt" variant="danger" onClick={handleDelete}>Delete</Button>
+           
+       </Modal.Footer>:<p></p>}
      </Modal>
      </div>
     )
